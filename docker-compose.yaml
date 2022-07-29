@@ -6,6 +6,7 @@ services:
   # - 3000:3000
   my-app:
     build: .
+    image: abdullahxy/my-app:latest
     ports:
       - 3000:3000
   mongodb:
