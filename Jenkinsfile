@@ -21,7 +21,7 @@ pipeline {
         
       }
       
-      stage("run frontend") {
+      stage("run backend") {
         
         steps {
           
