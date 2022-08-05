@@ -4,7 +4,7 @@ pipeline {
   
   tools {
     
-    gradle 'Gradle'
+    gradle 'Gradle-6.2'
     
   }
   
