@@ -7,6 +7,7 @@ pipeline {
     stage("build") {
       
       steps {
+        echo 'polling should work now!!!'
         echo 'building the application...'
       }
     }
