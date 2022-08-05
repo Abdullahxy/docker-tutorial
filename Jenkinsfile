@@ -32,7 +32,8 @@ pipeline {
           
         echo 'executing gradle'
             
-        sh 'gradlew -v'
+        sh 'locate gradlew'
+        sh 'pwd'
           
       }
         
