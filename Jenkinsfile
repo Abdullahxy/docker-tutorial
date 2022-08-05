@@ -34,6 +34,8 @@ pipeline {
           
         sh 'pwd'
         sh 'ls'
+        sh 'ls ./'
+        sh './gradlew'
       }
         
     }
