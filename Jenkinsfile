@@ -36,9 +36,7 @@ pipeline {
         
         sh 'pwd'
         sh 'ls'
-        sh 'cd /var/jenkins_home/tools/'
-        sh 'ls'
-        sh './gradlew'
+        sh 'ls /var/jenkins_home/tools/'
       }
         
     }
