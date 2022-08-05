@@ -31,10 +31,9 @@ pipeline {
       steps {
           
         echo 'executing gradle'
-            
-        sh 'locate gradlew'
-        sh 'pwd'
           
+        sh 'pwd'
+        sh 'ls'
       }
         
     }
