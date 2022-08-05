@@ -31,10 +31,13 @@ pipeline {
       steps {
           
         echo 'executing gradle'
-          
+        
+        // - [ ] /var/jenkins_home/tools/Hudson.plugins.gradle.GradleInstallation/Gradle
+        
         sh 'pwd'
         sh 'ls'
-        sh 'ls ./'
+        sh 'cd /var/jenkins_home/tools/Hudson.plugins.gradle.GradleInstallation/Gradle'
+        sh 'ls'
         sh './gradlew'
       }
         
