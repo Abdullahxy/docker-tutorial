@@ -21,7 +21,7 @@ pipeline {
       steps {
         
         echo 'building the Image from Dockerfile...'
-        sh 'docker build -t Abddullahxy/twn-demo-app:latest .'
+        sh 'docker build -t Abdullahxy/twn-demo-app:latest .'
         
       }
       
