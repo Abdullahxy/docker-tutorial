@@ -28,6 +28,17 @@ pipeline {
         
     }
     
+    stage("start") {
+      
+      steps {
+        
+        echo 'Starting docker daemon..'
+        sh 'sudo systemctl start docker'
+        
+      }
+      
+    }
+    
     stage("build") {
       
       steps {
