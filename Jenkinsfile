@@ -33,7 +33,7 @@ pipeline {
       steps {
         
         echo 'Starting docker daemon..'
-        sh 'sudo systemctl start docker'
+        sh 'systemctl start docker'
         
       }
       
