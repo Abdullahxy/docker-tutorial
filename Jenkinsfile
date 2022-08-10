@@ -33,7 +33,7 @@ pipeline {
       steps {
         
         echo 'building the Image from Dockerfile...'
-        sh 'docker build -t Abdullahxy/twn-demo-app:latest .'
+        sh 'docker build -t abdullahxy/twn-demo-app:latest .'
         
       }
       
@@ -54,7 +54,7 @@ pipeline {
       steps {
         
         echo 'deploying the application...'
-        sh 'docker push Abdullahxy/twn-demo-app:latest'
+        sh 'docker push abdullahxy/twn-demo-app:latest'
         
       }
     }
