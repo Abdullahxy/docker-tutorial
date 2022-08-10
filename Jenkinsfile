@@ -28,16 +28,16 @@ pipeline {
         
     }
     
-    stage("start") {
+//     stage("start") {
       
-      steps {
+//       steps {
         
-        echo 'Starting docker daemon..'
-        sh 'dockerd'
+//         echo 'Starting docker daemon..'
+//         sh 'dockerd'
         
-      }
+//       }
       
-    }
+//     }
     
     stage("build") {
       
