@@ -1,32 +1,58 @@
 pipeline {
-  
   agent any
-  
-  options {
-   
-    buildDiscarder(logRotator(numToKeepStr:'5'))
-    
+  tools {
+    // a bit ugly because there is no `@Symbol` annotation for the DockerTool
+    // see the discussion about this in PR 77 and PR 52: 
+    // https://github.com/jenkinsci/docker-commons-plugin/pull/77#discussion_r280910822
+    // https://github.com/jenkinsci/docker-commons-plugin/pull/52
+    'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
   }
-  
   environment {
-    
-   DOCKERHUB_CREDENTIALS = credentials('Abdullahxy-dockerhub')
-    
+    DOCKER_CERT_PATH = credentials('id-for-a-docker-cred')
   }
-  
   stages {
-    
-    stage('initialize') {
-      
+    stage('foo') {
       steps {
-        
-        script{
-          def dockerHome = tool 'docker'
-          env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
+        sh "docker version" // DOCKER_CERT_PATH is automatically picked up by the Docker client
       }
-        
     }
+  }
+}
+
+
+
+
+
+
+// pipeline {
+  
+//   agent any
+  
+//   options {
+   
+//     buildDiscarder(logRotator(numToKeepStr:'5'))
+    
+//   }
+  
+//   environment {
+    
+//    DOCKERHUB_CREDENTIALS = credentials('Abdullahxy-dockerhub')
+    
+//   }
+  
+//   stages {
+    
+//     stage('initialize') {
+      
+//       steps {
+        
+//         script{
+//           def dockerHome = tool 'docker'
+//           env.PATH = "${dockerHome}/bin:${env.PATH}"
+//         }
+//       }
+        
+//     }
     
 //     stage("start") {
       
@@ -39,46 +65,46 @@ pipeline {
       
 //     }
     
-    stage("build") {
+//     stage("build") {
       
-      steps {
+//       steps {
         
-        echo 'building the Image from Dockerfile...'
-        sh 'docker build -t abdullahxy/twn-demo-app:latest .'
+//         echo 'building the Image from Dockerfile...'
+//         sh 'docker build -t abdullahxy/twn-demo-app:latest .'
         
-      }
+//       }
       
-    }
+//     }
     
-    stage("login") {
+//     stage("login") {
       
-      steps {
+//       steps {
         
-        echo 'logging into DockerHub...'
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+//         echo 'logging into DockerHub...'
+//         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         
-      }
-    }
+//       }
+//     }
     
-    stage("push") {
+//     stage("push") {
       
-      steps {
+//       steps {
         
-        echo 'deploying the application...'
-        sh 'docker push abdullahxy/twn-demo-app:latest'
+//         echo 'deploying the application...'
+//         sh 'docker push abdullahxy/twn-demo-app:latest'
         
-      }
-    }
-  }
+//       }
+//     }
+//   }
   
-  post {
+//   post {
    
-    always {
+//     always {
      
-      sh 'docker logout'
+//       sh 'docker logout'
       
-    }
+//     }
     
-  }
+//   }
   
-}
+// }
